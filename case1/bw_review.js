@@ -54,7 +54,7 @@ function lightStars(e){
    }
    for(var i = starNumber; starNumber < 5; i++){
       stars[i].src = "bw_star.png";
-      document.getElementById("rating").value = starNumver + "stars";
+      document.getElementById("rating").value = starNumber + " stars";
    }
    e.target.addEventListener("mouseleave", turnOffStars);
    e.target.addEventListener("mouseleave", function(){
