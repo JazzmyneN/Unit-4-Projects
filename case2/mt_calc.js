@@ -55,13 +55,13 @@ function buttonClick(e) {
          calcValue = eraseChar(calcValue);
          break;
       case 'enter':
-         calcValue = " = " + evalEq(calcValue, calcDecimal) + "\n";
+         calcValue += " = " + evalEq(calcValue, calcDecimal) + "\n";
          break;
       case 'prev':
-         calcValue = lastEq(calcValue);
+         calcValue += lastEq(calcValue);
          break;
       default:
-         calcValue = calcValue + buttonValue;
+         calcValue += buttonValue;
    }
    document.getElementById("calcWindow").value = calcValue;
    document.getElementById("calcWindow").focus();
@@ -71,21 +71,18 @@ function calcKeys(e){
    var calcValue = document.getElementById("calcWindow").value;
    var calcDecimal = document.getElementById("decimals").value;
    switch(e.target.key){
-      case 'del':
+      case 'Delete':
          calcValue = "";
          break;
-      case 'bksp':
-         calcValue = eraseChar(calcValue);
+      case 'ArrowUp':
+         calcValue += lastEq(calcValue, calcDecimal);
+         e.preventDefault();
+      case 'Enter':
+         calcValue += " = " + evalEq(calcValue, calcDecimal);
          break;
-      case 'enter':
-         calcValue = " = " + evalEq(calcValue, calcDecimal) + "\n";
-         break;
-      case 'prev':
-         calcValue = lastEq(calcValue);
-         break;
-      default:
-         calcValue = calcValue + buttonValue;
    }
+   document.getElementById("calcWindow").value = calcValue;
+   
 }
 
 /* ===================================================================== */
